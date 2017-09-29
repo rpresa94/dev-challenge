@@ -36,3 +36,11 @@ function removeClass(el, className) {
     el.className=el.className.replace(reg, ' ')
   }
 }
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('./sw.js')
+    .then(function () {
+      console.log('Service Worker Registered');
+    });
+}
