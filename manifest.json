@@ -1,0 +1,9 @@
+{
+  "name": "KelbyOne API Code Sample",
+  "short_name": "KelbyOne",
+  "icons": [],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#F8F8FC",
+  "theme_color": "#f9a11b"
+}
