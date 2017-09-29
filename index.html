@@ -89,9 +89,13 @@
 
 </head>
 
-<body>
+<body onresize="checkSidebar()">
   <header class="primary">
     <div class="inner">
+      <div class="button left" onclick="toggleSidebar()">
+        <i class="material-icons">menu</i>
+      </div>
+      <div class="title">KelbyOne API Demo</div>
     </div>
   </header>
 
@@ -108,5 +112,7 @@
   <div class="overlay">
   </div>
 </body>
+
+<script src="js/shell.js"></script>
 
 </html>
