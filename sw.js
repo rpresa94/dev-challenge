@@ -6,7 +6,7 @@ var filesToCache = [
   'js/shell.js',
   'css/reset.css',
   'css/typography.css',
-  'css/layout.css',
+  'css/shell.css',
   'images/kelbyone-logo.png'
 ];
 
