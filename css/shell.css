@@ -1,0 +1,259 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+}
+
+img {
+  min-width: 100%;
+  max-width: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+// Typography
+*/
+p {
+  font-size: 14px;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  line-height: 1.2;
+}
+
+a {
+  color: rgb(33, 33, 33);
+  text-decoration: none;
+}
+
+.block-title {
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0.05rem;
+  font-weight: 400;
+  color: rgb(33, 33, 33);
+  text-transform: inherit;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.caption {
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: rgb(117, 117, 117);
+  text-transform: inherit;
+}
+
+.subhead {
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: 0.1px;
+  font-weight: 400;
+  color: rgb(117, 117, 117);
+  text-transform: inherit;
+  margin: 0;
+  padding: 15px 0;
+}
+
+/*
+// App Layout
+*/
+
+/* Sidebar Nav */
+
+nav.sidebar .block-title {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+nav.sidebar .item a {
+  padding: 12px;
+  padding-left: 15px;
+  border-left: 4px solid rgba(0, 0, 0, 0);
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+nav.sidebar .item a.active, nav.sidebar .item a:hover {
+  border-left-color: rgb(249, 161, 27);
+  background: rgb(252, 252, 255);
+}
+
+/* Main Section */
+section.main .inner {
+  max-width: 1200px;
+  padding-top: 12px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+section.main .inner .grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+section.main .inner .grid .item {
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  border-radius: 2px;
+  background: rgb(255, 255, 255);
+  font-size: 1.4rem;
+  box-shadow: 0px 5px 11px -2px rgba(0, 0, 0, 0.18), 0px 4px 12px -7px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
+section.main .inner .grid .item .details {
+  padding: 0 16px 16px;
+}
+
+@media screen and (min-width:560px) {
+  section.main .inner .grid .item {
+    flex: 0 0 48%;
+    width: 48%;
+    max-width: 48%;
+  }
+
+}
+
+@media screen and (min-width:960px) {
+  section.main .inner .grid .item {
+    flex: 0 0 31.33%;
+    width: 31.33%;
+    max-width: 31.33%;
+  }
+
+}
+
+.course .details {
+  margin: 0 auto;
+  max-width: 860px;
+  padding: 0 !important;
+}
+
+ol .title {
+  padding: 12px;
+}
+
+/* Login Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99999;
+  display: none;
+  background: rgb(252, 252, 255);
+}
+
+.show-overlay .overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay form {
+  width: 250px;
+  height: 330px;
+  padding: 25px;
+}
+
+.overlay form img {
+  margin-bottom: 20px;
+}
+
+label {
+  padding-top: 8px;
+  position: relative;
+  float: left;
+}
+
+input {
+  display: block;
+  background: none;
+  padding: 0.125rem 0.125rem 0.0625rem;
+  font-size: 1em;
+  border-width: 0;
+  border-color: transparent;
+  line-height: 1.9;
+  width: 100%;
+  -webkit-transition: all 0.28s ease;
+  transition: all 0.28s ease;
+  box-shadow: none;
+  border-bottom: 1px solid rgb(249, 161, 27);
+}
+
+input:focus {
+  outline: none;
+}
+
+.button.submit, input[type="submit"] {
+  padding: 8px;
+  margin-top: 8px;
+  background: rgb(249, 161, 27);
+  color: rgb(252, 252, 255);
+}
+
+/*
+// Helper classes
+*/
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.scrollable {
+  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.animated {
+  transition-property: -webkit-transform, transform, width, padding;
+  transition-duration: 0.275s;
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+}
+
+.error {
+  text-align: center;
+  color: #e51c23;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.loading::after {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  padding: 1em;
+  content: "Loading...";
+  text-align: center;
+  align-items: center;
+  justify-content: flex-start;
+}

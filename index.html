@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>KelbyOne API Code Sample</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="KelbyOne">
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#4788d8">
+
+  <link rel="shortcut icon" href="images/icons/favicon.ico">
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/shell.css">
+
+  <!-- generic shell css -->
+  <style type="text/css">
+    html, body {
+      overflow: hidden;
+      font-family: 'Montserrat', sans-serif;
+      color: rgb(117, 117, 117);
+      font-weight: 300;
+    }
+
+    header.primary {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      line-height: 50px;
+      transform: translateX(0);
+      background: rgb(248, 248, 252);
+      color: rgb(143, 153, 173);
+      z-index: 100;
+      box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.24);
+    }
+
+    header.primary .button {
+      color: rgb(143, 153, 173);
+      padding: 13px;
+      margin: 0 15px;
+      cursor: pointer;
+      position: relative;
+      float: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    nav.sidebar {
+      position: fixed;
+      top: 50px;
+      left: 0;
+      bottom: 0;
+      width: 300px;
+      transform: translateX(-300px);
+      padding: 24px 0;
+      z-index: 40;
+      background: rgb(248, 248, 252);
+      box-shadow: 2px 0 6px 0 rgba(0, 0, 0, 0.24);
+    }
+
+    .show-sidebar nav.sidebar {
+      transform: translateX(0);
+    }
+
+    section.main {
+      position: absolute;
+      top: 50px;
+      bottom: 0;
+      padding: 24px;
+      left: 0;
+      right: 0;
+      transform: translateX(0);
+      background: rgb(252, 252, 255);
+    }
+
+    @media screen and (min-width:960px) {
+      .show-sidebar section.main {
+        padding-left: 324px;
+      }
+    }
+  </style>
+
+  <!-- Add any custom css you want in this file -->
+  <link rel="stylesheet" href="css/app.css">
+
+</head>
+
+<body onresize="checkSidebar()">
+  <header class="primary">
+    <div class="inner">
+      <div class="button left" onclick="toggleSidebar()">
+        <i class="material-icons">menu</i>
+      </div>
+      <div class="title">KelbyOne API Demo</div>
+    </div>
+  </header>
+
+  <nav class="sidebar">
+    <div class="inner">
+    </div>
+  </nav>
+
+  <section class="main">
+    <div class="inner">
+    </div>
+  </section>
+
+  <div class="overlay">
+  </div>
+</body>
+
+<script src="js/shell.js"></script>
+
+<!-- Add any custom js you want in this file -->
+<script src="js/app.js"></script>
+</html>
