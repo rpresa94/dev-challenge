@@ -39,6 +39,7 @@ For authentication, please use the following account:
  - `/courses/<course_id>/lessons` Used to retrieve all lessons for an individual course
 ---
 ### Model definitions
+
 There will be additional data returned from the API, but for this exercise, you will only need the following;
 ```
   user: {
@@ -78,8 +79,9 @@ There will be additional data returned from the API, but for this exercise, you 
   }
 ```
 
-Sample html structure for demo elements
-* Filter List (Nav)*
+### Sample html structure for demo elements
+###### Feel free to use the following pre-styled templates, or create your own
+*Filter List (Nav)*
 ```
 <!-- Sample Category Filter Layout -->
 <div class="block-title">Sample Filter List</div>
@@ -96,7 +98,7 @@ Sample html structure for demo elements
 </ul>
 ```
 
-* Course Grid*
+*Course Grid*
 ```
 <!-- Sample Course Grid Layout -->
 <div class="block-title" id="course-list">Sample Course Grid Layout</div>
@@ -118,7 +120,7 @@ Sample html structure for demo elements
 </div>
 ```
 
-* Course Detais*
+*Course Detais*
 ```
 <!-- Sample Course Details Layout -->
 <div class="block-title left" id="course-details">Sample Course Details Layout</div>
@@ -139,4 +141,17 @@ Sample html structure for demo elements
     </ol>
   </div>
 </div>
+```
+
+*Login Form*
+```
+<form id="login" method="post">
+  <img src="images/kelbyone-logo.png" alt="">
+  <label for="username">Username</label>
+  <input name="username" type="text" value="FETest" placeholder="username" autocomplete="off">
+  <label for="password">Password</label>
+  <input name="password" type="password" value="FETest!@#" placeholder="password" autocomplete="off">
+  <input type="submit" value="Submit" role="button">
+  <p id="error"></p>
+</form>
 ```
