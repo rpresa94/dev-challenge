@@ -13,25 +13,26 @@ On initial load, the user should be presented with a login form. Once the user i
 Once you have completed the exercise, please host the files on github.com and add @AdamFrick and @CurtHusting as a collaborator.
 
 ### API endpoints
- - Origin: `https://kelbynew.staging.wpengine.com`
- - Namespace: `/wp-json/ko/v2`
+ - Origin: `https://kelbystaging.wpengine.com`
+ - Namespace: `/wp-json/ko/v4`
  ---
  - `/users/login` Used to authenticate a user on our system.
 > Use HTTP Basic Authentication. Simply pass the username and password with the request through the Authorization header. This value should be encoded (using base64 encoding) per the HTTP Basic Authentication specification.
 For authentication, please use the following account:
-  `Username: FETest`
-  `Password: FETest!@#`
+  `Username: fetest`
+  `Password: fetest!@#`
 ---
  - `/courses` Used to retrieve all courses
  - **Available Request Parameters**
-   - `per_page`: (optional) INT - Number of courses to retrieve at a time. Defaults to [1]
+   - `per_page`: (optional) INT - Number of courses to retrieve at a time. Defaults to [10]
    - `page`: (optional) INT - Page to retrieve from the result set. Defaults to [1]
+   - `includes`: Comma separated values of hydratable data. You can hydrate `instructors` and `lessons`. Example: `?includes=instructors,lessons`
 ---
  - `/categories` Used to retrieve a list of categories
 ---
  - `/categories/<category_id>/courses` Used to retrieve courses in an individual category
  - **Available Request Parameters**
-   - `per_page`: (optional) INT - Number of courses to retrieve at a time. Defaults to [1]
+   - `per_page`: (optional) INT - Number of courses to retrieve at a time. Defaults to [10]
    - `page`: (optional) INT - Page to retrieve from the result set. Defaults to [1]
 ---
  - `/courses/<course_id>` Used to retrieve information about an individual course
@@ -43,39 +44,39 @@ For authentication, please use the following account:
 There will be additional data returned from the API, but for this exercise, you will only need the following;
 ```
   user: {
-    display_name: STRING,
-    email: STRING,
-    first_name: STRING,
     id: INT,
-    last_name: STRING
+    email: STRING,
+    firstName: STRING,
+    lastName: STRING,
+    displayName: STRING
   }
   category: {
     id: INT,
-    display_name: STRING
+    title: STRING
   }
   course: {
     id: INT,
     title: STRING,
-    content: STRING,
+    content: OBJECT,
     duration: INT,
-    instructor: EMBEDDED <instructor>,
-    num_lessons: INT,
-    thumbnail_url: STRING,
-    published_date: STRING
+    instructors: EMBEDDED <instructor>,
+    lessons: OBJECT,
+    images: OBJECT,
+    dates: OBJECT
   }
   lesson: {
     id: INT,
     title: STRING,
     duration: INT,
-    course_id: INT,
-    description: STRING,
-    published_date: STRING
+    course: INT,
+    content: OBJECT,
+    dates: OBJECT
   }
   instructor: {
     id: INT,
-    content: STRING,
-    display_name: STRING,
-    thumbnail_url: STRING
+    content: OBJECT,
+    title: STRING,
+    images: OBJECT,
   }
 ```
 
