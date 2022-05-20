@@ -10,7 +10,7 @@ To get started just fork this repository into your github account.
 
 ### Project scope
 On initial load, the user should be presented with a login form. Once the user is successfully logged in they should be presented with a list of the most recent courses as well as a way to filter courses by category. Clicking on an individual course should bring up a detailed view of the course including a list of the lessons for the selected course.
-Once you have completed the exercise, please host the files on github.com and add @AdamFrick and @CurtHusting as a collaborator.
+Once you have completed the exercise, please host the files on github.com and add @AdamFrick as a collaborator.
 
 ### API endpoints
  - Origin: `https://kelbystaging.wpengine.com`
