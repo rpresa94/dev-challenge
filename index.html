@@ -25,7 +25,6 @@
   <!-- generic shell css -->
   <style type="text/css">
     html, body {
-      overflow: hidden;
       font-family: 'Montserrat', sans-serif;
       color: rgb(117, 117, 117);
       font-weight: 300;
@@ -75,15 +74,26 @@
     }
 
     section.main {
-      position: absolute;
-      top: 50px;
-      bottom: 0;
       padding: 24px;
-      left: 0;
-      right: 0;
+      padding-top: 90px;
       transform: translateX(0);
       background: rgb(252, 252, 255);
     }
+
+    .filter-select {
+        display: block;
+        width: 100%;
+        border: 1px solid #eee;
+        height: 40px;
+        border-radius: 6px;
+        padding: 0 15px;
+        margin-bottom: 30px;
+    }
+
+    [v-cloak] {
+        display: none;
+    }
+
 
     @media screen and (min-width:960px) {
       .show-sidebar section.main {
@@ -112,17 +122,86 @@
     </div>
   </nav>
 
-  <section class="main">
+  <section class="main" id="app" v-cloak>
     <div class="inner">
+        <!-- Sample Category Filter Layout -->
+        <div class="block-title">Filter courses</div>
+            <select v-model="category" class="filter-select" @change="filter">
+                <option :value="null" selected>---</option>
+                <option v-for="category in categories" :value="category.id">
+                    {{ category.title }}
+                </option>
+            </select>
+        </ul>
+
+        <!-- Sample Course Grid Layout -->
+        <div class="block-title" id="course-list">Courses</div>
+        <div class="grid">
+          <div class="item" v-for="course in courses">
+            <img v-if="course.cover" class="thumb" :src="course.cover['480w']">
+            <img v-else class="thumb" src="https://via.placeholder.com/480x270">
+            <div class="details">
+              <a href="#course-details">
+                  <h4 class="subhead">{{ course.title }}</h4>
+              </a>
+              <div class="caption">
+                  <strong>Instructor ID:</strong> {{ course.instructors[0] }} | 
+                  <strong>Published:</strong> {{ course.dates.created }}
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
   </section>
 
-  <div class="overlay">
-  </div>
-</body>
-
+<script src="https://unpkg.com/vue@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="js/shell.js"></script>
 
-<!-- Add any custom js you want in this file -->
-<script src="js/app.js"></script>
+<script>
+const { createApp } = Vue
+
+    createApp({
+        data() {
+            return {
+                endpoint: 'https://kelbystaging.wpengine.com/wp-json/ko/v4',
+                courses: [],
+                categories: [],
+                category: null,
+            }
+        },
+
+        mounted() {
+            this.getCourses();
+            this.getCategories();
+        },
+
+        methods: {
+            getCategories() {
+                axios.get(this.endpoint + '/categories')
+                    .then(r => {
+                        this.categories = r.data.data
+                    })
+            },
+
+            getCourses(categoryId = null) {
+                let url = this.endpoint + '/courses'
+
+                if (categoryId) {
+                    url = this.endpoint + '/categories/'+ categoryId +'/courses'
+                }
+
+                axios.get(url)
+                    .then(r => {
+                        this.courses = r.data.data
+                    })
+            },
+
+            filter() {
+                this.getCourses(this.category);
+            },
+        }
+    }).mount('#app')
+</script>
+</body>
 </html>
